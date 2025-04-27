@@ -6,6 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 class TestCase1:
 
+    print("testcase1")
     @pytest.fixture(autouse=True, scope="session")
     def test_case_login(self, browser):
         # 加载Excel文件
