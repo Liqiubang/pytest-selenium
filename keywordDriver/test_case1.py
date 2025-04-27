@@ -4,8 +4,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 import logging
 logger = logging.getLogger(__name__)
-
-
 class TestCase1:
 
     @pytest.fixture(autouse=True, scope="session")
