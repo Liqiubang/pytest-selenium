@@ -1,0 +1,17 @@
+[32mINFO    [0m conftest:conftest.py:18 夹具初始化完成，浏览器启动成功
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namespan
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namespan
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namespan
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namespan
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namediv
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namediv
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namediv
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namediv
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_nameinput
+[32mINFO    [0m keywordDriver.test_webInit:test_webInit.py:20 元素定位成功：tag_namespan
