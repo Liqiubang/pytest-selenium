@@ -8,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from keywordDriver.test_webInit import WebUIInit
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(autouse=True, scope="session")
 def fixture_browser():
     """全局浏览器管理fixture"""
     driver = webdriver.Chrome()
@@ -20,7 +20,7 @@ def fixture_browser():
     driver.quit()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(autouse=True, scope="session")
 def fixture_load_excel():
     # 加载excel
     workbook = openpyxl.load_workbook('test_excel.xlsx')

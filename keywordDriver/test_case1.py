@@ -1,9 +1,11 @@
 import pytest
 import logging
+
 logger = logging.getLogger(__name__)
 
+
 class TestCase1:
-    @pytest.fixture(autouse=True, scope="session")
+    @pytest.fixture(scope="session")
     def test_case_login(self, fixture_browser, fixture_load_excel):
         for row in fixture_load_excel.iter_rows(min_row=2, values_only=True):
             # 读取测试用例信息
@@ -31,9 +33,9 @@ class TestCase1:
                 continue
         print("\n")
 
-    #第minRow开始，执行第caseId个用例，
+    # 第minRow开始，执行第caseId个用例，
     @pytest.mark.parametrize("minRow,caseId", [(9, 2)])
-    def test_action(self, fixture_browser, fixture_load_excel, minRow, caseId):
+    def test_cases(self, test_case_login, fixture_browser, fixture_load_excel, minRow, caseId):
         for row in fixture_load_excel.iter_rows(min_row=minRow, values_only=True):
             # 读取测试用例信息
             case_id = int(row[0])
@@ -63,4 +65,4 @@ class TestCase1:
         fixture_browser.sleep(5)
 
     if __name__ == "__main__":
-        test_action()
+        test_cases()
