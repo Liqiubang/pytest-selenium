@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-class WebUIInit:
+class TestAction:
     def __init__(self, driver):
         self.driver = driver
 
@@ -37,7 +37,6 @@ class WebUIInit:
         option = self.get_elements(param2)
         self.driver.execute_script("arguments[0].click();", option)
 
-    # 依据不同的定位方法，进行点击操作
     def click(self, param1):
         self.get_elements(param1).click()
 
