@@ -7,8 +7,9 @@ logger = logging.getLogger(__name__)
 from selenium.webdriver.support.wait import WebDriverWait
 from keywordDriver.test_webInit import WebUIInit
 
+
 @pytest.fixture(scope="session")
-def browser():
+def fixture_browser():
     """全局浏览器管理fixture"""
     driver = webdriver.Chrome()
     driver.maximize_window()
@@ -18,8 +19,9 @@ def browser():
     yield web_ui
     driver.quit()
 
+
 @pytest.fixture(scope="session")
-def test_data():
-    #加载excel
+def fixture_load_excel():
+    # 加载excel
     workbook = openpyxl.load_workbook('test_excel.xlsx')
     return workbook.active

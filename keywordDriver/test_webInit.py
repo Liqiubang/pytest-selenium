@@ -1,12 +1,10 @@
 import time
 import logging
+logger = logging.getLogger(__name__)
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
-logger = logging.getLogger(__name__)
-
 
 class WebUIInit:
     def __init__(self, driver):
@@ -34,7 +32,7 @@ class WebUIInit:
         element.clear()
         element.send_keys(param2)
 
-    def hide_div(self, param1, param2):
+    def get_hide_elements(self, param1, param2):
         self.get_elements(param1).click()
         option = self.get_elements(param2)
         self.driver.execute_script("arguments[0].click();", option)
