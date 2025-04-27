@@ -1,8 +1,7 @@
-from selenium import webdriver
 import time
 import logging
+from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.expected_conditions import *
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -10,18 +9,25 @@ logger = logging.getLogger(__name__)
 
 
 class WebUIInit:
-    # 初始化
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, timeout=10)
 
     def get_elements(self, xpath):
-        el = self.wait.until(EC.visibility_of_element_located((By.XPATH, xpath)))  # 元素可见时返回元素对象 自动等待元素出现 参数是元组，所以要多加一组小括号
-        logger.info(f"元素定位成功：tag_name{el.tag_name}")
-        return el
+        try:
+            self.wait = WebDriverWait(self.driver, 10)
+            el = self.wait.until(EC.visibility_of_element_located((By.XPATH, xpath)))
+            logger.info(f"元素定位成功：{el.tag_name} (XPath: {xpath})")
+            return el
+        except TimeoutException:
+            logger.error(f"元素定位超时：XPath {xpath}")
+            raise
 
     def goto(self, url):
         self.driver.get(url)
+
+    def asserts(self, param1):
+        element = self.get_elements(param1)
+        return element.text
 
     def input(self, param1, param2):
         element = self.get_elements(param1)

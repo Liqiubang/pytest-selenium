@@ -1,2 +1,0 @@
-Test Case 1: 登录
-Test Case 2: 新建发票

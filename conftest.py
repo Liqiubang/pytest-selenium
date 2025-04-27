@@ -1,11 +1,10 @@
 # conftest.py（核心配置文件）
+import openpyxl
 import pytest
 from selenium import webdriver
-from typing import Generator
 import logging
 logger = logging.getLogger(__name__)
 from selenium.webdriver.support.wait import WebDriverWait
-
 from keywordDriver.test_webInit import WebUIInit
 
 @pytest.fixture(scope="session")
@@ -18,3 +17,9 @@ def browser():
     logger.info("夹具初始化完成，浏览器启动成功")
     yield web_ui
     driver.quit()
+
+@pytest.fixture(scope="session")
+def test_data():
+    #加载excel
+    workbook = openpyxl.load_workbook('test_excel.xlsx')
+    return workbook.active
