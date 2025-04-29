@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 from selenium.webdriver.support.wait import WebDriverWait
 from keywordDriver.test_action import TestAction
 
-@pytest.fixture(autouse=True, scope="session")
+@pytest.fixture(autouse=False, scope="session")
 def fixture_browser():
     """全局浏览器管理fixture"""
     driver = webdriver.Chrome()
@@ -17,7 +17,7 @@ def fixture_browser():
     logger.info("夹具初始化完成，浏览器启动成功")
     yield test_action_object
     driver.quit()
-@pytest.fixture(autouse=True, scope="session")
+@pytest.fixture(autouse=False, scope="session")
 def fixture_load_excel():
     # 加载excel
     workbook = openpyxl.load_workbook('test_excel.xlsx')

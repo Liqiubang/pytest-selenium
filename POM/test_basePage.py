@@ -6,6 +6,8 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.expected_conditions import *
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.expected_conditions import alert_is_present
 from selenium.webdriver.support.wait import WebDriverWait
 logger = logging.getLogger(__name__)
 # logger.setLevel(logging.INFO)
@@ -23,7 +25,7 @@ class TestBasePage:
         logger.info(f"正在定位元素：{xpath=}")
         allure.attach(self.driver.get_screenshot_as_png(), name="定位截图",
                       attachment_type=allure.attachment_type.PNG)  # 定位前截图
-        el = self.wait.until(visibility_of_element_located((By.XPATH, xpath)))  # 元素可见时返回元素对象 自动等待元素出现 参数是元组，所以要多加一组小括号
+        el = self.wait.until(EC.visibility_of_element_located((By.XPATH, xpath)))  # 元素可见时返回元素对象 自动等待元素出现 参数是元组，所以要多加一组小括号
         logger.info(f"元素定位成功：tag_name{el.tag_name}")
         return el
 
@@ -38,7 +40,7 @@ class TestBasePage:
 
     def alert_ok(self):
         logger.info("正在处理弹窗")
-        alert = self._wait.until(alert_is_present)
+        alert = self.wait.until(alert_is_present)
         alert.accept()
         logger.info("弹窗处理完成")
 
