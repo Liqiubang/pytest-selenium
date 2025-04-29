@@ -1,6 +1,5 @@
 import logging
 import time
-import pdb
 import allure
 import pytest
 from selenium import webdriver
