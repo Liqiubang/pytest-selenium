@@ -9,11 +9,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.expected_conditions import alert_is_present
 from selenium.webdriver.support.wait import WebDriverWait
 logger = logging.getLogger(__name__)
-# logger.setLevel(logging.INFO)
+# logger.setLevel(logging.INFO)pip show selenium
 class TestBasePage:
     # _loc_msg = "//div[contains(@class, 'ant-message-error') and contains(@class, 'ant-message-custom-content')]/span[2]" #该主体已存在，请重新操作!
     _loc_msg = "//div[contains(@class, 'ant-message-success') and contains(@class, 'ant-message-custom-content')]/span[2]"
-
+    _loc_msg_audit = "//p[@class='el-message__content']"
     # 初始化方法，每次创建对象时调用，第一个参数必须是 self，self指向实例本身
     def __init__(self, driver: webdriver.Chrome):
         self.driver = driver
@@ -37,11 +37,11 @@ class TestBasePage:
                 return self.get_element(xpath)
         raise AttributeError(f"属性 '{item}' 不存在")
 
-    def alert_ok(self):
-        logger.info("正在处理弹窗")
-        alert = self.wait.until(alert_is_present)
-        alert.accept()
-        logger.info("弹窗处理完成")
+    # def alert_ok(self):
+    #     logger.info("正在处理弹窗")
+    #     alert = self.wait.until(alert_is_present)
+    #     alert.accept()
+    #     logger.info("弹窗处理完成")
 
 class TestLoginPage(TestBasePage):
     _loc_username = '/html/body/div/div/div/div[2]/div[1]/form/div[1]/div/div[1]/input'
@@ -62,7 +62,7 @@ class TestTicketPage(TestBasePage):
     _loc_ticket_manage = "//span[text()='发票管理']"
     _loc_ticket_audits = "//span[text()='发票审核']"
     _loc_ticket_no_audit = "/html/body/div[1]/div/main/div/div/div[2]/div[2]/form/div[1]/div/div/div[2]/div"
-    _loc_ticket_e_ticket = "/html/body/div[1]/div/main/div/div/div[2]/div[2]/form/div[2]/div/div/div[11]/div"
+    _loc_ticket_e_ticket = "/html/body/div[1]/div/main/div/div/div[2]/div[2]/form/div[2]/div/div/div[7]/div"
     _loc_ticket_search = "//span[text()='搜索']"
     _loc_audit = "/html/body/div[1]/div/main/div/div/div[2]/div[2]/div[2]/div[4]/div[2]/table/tbody/tr[1]/td[29]/div/button/span"
     _loc_passBtn = "//span[text()='通过']"
@@ -77,8 +77,11 @@ class TestTicketPage(TestBasePage):
         self.ticket_search.click()
         self.audit.click()
         self.passBtn.click()
+        time.sleep(1)
+        self.ticket_manage.click()
         logger.info("发票审核处理完成")
         allure.attach(self.driver.get_screenshot_as_png(), "审核截图", allure.attachment_type.PNG)  # 交互后截图
+
 class TestNewTicketPage(TestBasePage):
     _loc_ticket_manage = "//span[text()='发票管理']"
     _loc_ticket_body = "//span[text()='发票主体']"
