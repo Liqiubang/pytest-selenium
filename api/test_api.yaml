@@ -1,0 +1,13 @@
+-
+  name: test_api_01 #值前面要加空格
+  request:
+      url: http://httpbin.org/get
+      method: GET
+      headers:
+        Content-Type: application/json
+      params:
+          name: test_api_01
+          age: 18
+  validate:
+      - eq: {'status_code', 200}
+      - eq: {'code', 200}
