@@ -1,0 +1,18 @@
+-
+  name: 国内stable发送 #值前面要加空格
+  request:
+      url: http://172.16.42.2:8080/msg/send/json
+      method: POST
+      headers:
+        Content-Type: application/json
+      params:
+        account: YZM2910712,
+        password: Li94122334@,
+        msg: 【创蓝云智】哈哈哈拒收请回复R,
+        phone: 15274438093,
+        sendtime: 202408271118,
+        report: true,
+        uid: S5043203--71----009,
+  validate:
+      - eq: {'code', 0}
+#      - eq: {'errorMsg', }
