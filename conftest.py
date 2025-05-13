@@ -17,6 +17,7 @@ def fixture_browser():
     logger.info("夹具初始化完成，浏览器启动成功")
     yield test_action_object
     driver.quit()
+
 @pytest.fixture(autouse=False, scope="session")
 def fixture_load_excel():
     # 加载excel

@@ -37,6 +37,7 @@ class TestBasePage:
                 return self.get_element(xpath)
         raise AttributeError(f"属性 '{item}' 不存在")
 
+
     # def alert_ok(self):
     #     logger.info("正在处理弹窗")
     #     alert = self.wait.until(alert_is_present)
@@ -152,5 +153,4 @@ class TestNewTicketPage(TestBasePage):
         self.confirm.click()
         logger.info("发票主体处理完成")
         allure.attach(self.driver.get_screenshot_as_png(), "发票主体截图", allure.attachment_type.PNG)  # 交互后截图
-
 

@@ -30,12 +30,19 @@ def test_ticket_ok(user_driver):
 
 @pytest.mark.pom
 @pytest.mark.parametrize("invoiceSubject,taxIdNo,address,phone,msg,flag", [
-    ("测试主体" + str(random.randint(100, 100000)), "111", "长沙", "1", "添加成功",1),
-    ("测试主体" + str(random.randint(100, 100000)), "222", "成都", "2", "添加成功",2),
-    ("测试主体" + str(random.randint(100, 100000)), "333", "重庆", "3", "添加成功",3)
+    ("测试主体" + str(random.randint(100, 100000)), "111", "长沙", "1", "添加成功", 1),
+    ("测试主体" + str(random.randint(100, 100000)), "222", "成都", "2", "添加成功", 2),
+    ("测试主体" + str(random.randint(100, 100000)), "333", "重庆", "3", "添加成功", 3)
 ])
-def test_new_ticket(user_driver, invoiceSubject, taxIdNo, address, phone, msg ,flag):
+def test_new_ticket(user_driver, invoiceSubject, taxIdNo, address, phone, msg, flag):
     logger.info("新增发票开始测试")
+    page = TestNewTicketPage(user_driver)
+    page.ticket_add(invoiceSubject, taxIdNo, address, phone)
+    assert page.msg.text == msg
+    user_driver.get_screenshot_as_png()
+    logger.info("-------------测试结束---------------")
+
+    #刷新页面没用
     if flag==1:
         page = TestNewTicketPage(user_driver)
         page.ticket_add(invoiceSubject, taxIdNo, address, phone)
@@ -49,5 +56,6 @@ def test_new_ticket(user_driver, invoiceSubject, taxIdNo, address, phone, msg ,f
         user_driver.get_screenshot_as_png()
         logger.info("-------------测试结束---------------")
 
+
 if __name__ == "__main__":
-        test_new_ticket()
+    test_new_ticket()
