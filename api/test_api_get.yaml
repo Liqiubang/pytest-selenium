@@ -1,0 +1,18 @@
+-
+  name: 国内HttpVarSM
+  request:
+      url: http://192.168.64.41:8080/msg/HttpVarSM
+      method: GET
+      headers:
+        Connection: keep-alive
+      params: # get用params
+        account: YZM1151786
+        pswd: 8470ec59782795f9eb49537ed66914d6
+        msg: 【创蓝云智】{$var}变量HttpVarSM短信{$var}自动化测试{$var}。
+        params: 15274438093,sitVar1,sitVar2,sitVar3
+        sendtime: 202307240930
+        report: true
+        extend: 123
+        uid: S5043203--71----009
+  validate:
+      - eq: {'code': '0'}

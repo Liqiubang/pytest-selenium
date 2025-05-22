@@ -1,0 +1,37 @@
+-
+  name: 国内sit单发
+  request:
+      url: http://192.168.64.41:8080/msg/send/json
+      method: POST
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      json: # get用params
+        account: M5865357
+        password: MHu5JC2w0j757e
+        msg: 【创蓝云智】哈哈哈拒收请回复R
+        phone: 15274438093
+        sendtime: 202408271118
+        report: true
+        extend: 123
+        uid: S5043203--71----009
+  validate:
+      - eq: {'code': '0'}
+
+-
+  name: 国内sit群发
+  request:
+      url: http://192.168.64.41:8080/msg/send/json
+      method: POST
+      headers:
+        Content-Type: application/json;charset=UTF-8
+      json: # get用params
+        account: M5865357
+        password: MHu5JC2w0j757e
+        msg: 【创蓝云智】哈哈哈拒收请回复R
+        phone: 15274438093,13203173318,19074910586
+        sendtime: 202408271118
+        report: true
+        extend: 123
+        uid: S5043203--71----009
+  validate:
+      - eq: {'code': '0'}

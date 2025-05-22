@@ -1,8 +1,6 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
-
 # options = webdriver.ChromeOptions()
 # options.add_argument("--disable-gpu")  # 禁用GPU加速‌
 # options.add_argument("--disable-extensions")  # 关闭扩展插件
@@ -49,3 +47,6 @@ def test_tickets_review():
     assert msg.text == "操作成功"
     time.sleep(3)
     driver.quit()
+
+if __name__ == '__main__':
+    test_tickets_review()
